@@ -82,7 +82,9 @@ var main = function(){
 	
 	
 	// Display Word Clock using user input time
-	$("#btn-input-time").click(function(){
+	
+	// Method to call (to enable both button click and pressing enter key)
+	var processInputTime = function(){
 		
 		// Read input and save hour and minute
 		var customTime = $('input[name=input-time]').val();
@@ -112,7 +114,21 @@ var main = function(){
 		{
 			$('#input-warning').show();
 		}
+	};
+	
+	// Button click
+	$("#btn-input-time").click(function(){
+		processInputTime();
 	});
+	
+	// Keypress enter event
+	$("#input-time-id").keypress(function(event){
+		if(event.which === 13)
+		{
+			processInputTime();
+		}
+	});
+	
 	
 	
 	// Reset to updating the clock in real time based on time
