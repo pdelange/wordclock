@@ -57,7 +57,7 @@ function WordClock(bgColor, onColor, offColor)
 		var onMap = letterArray.slice();
 		var on = "*"; // Character to represent "on" lights
 		
-		// Returns a string on "on" bits based on the word to turn on and the "on" character
+		// Returns a string of "on" bits based on the word to turn on and the "on" character
 		var replacement = function(word, on){
 			var ons = "";
 			for(var index in word)
@@ -295,18 +295,20 @@ function WordClock(bgColor, onColor, offColor)
 			var line = "";
 			for(var col in grid[row])
 			{
+				line += '<span style="color:';
+				
 				// If letter is on, use the on color
 				if(grid[row][col].isOn)
 				{
-					line += '<span style="color:' + this.onColor + '">';
+					line += this.onColor;
 				}
 				
 				// Otherwise, use the off color
 				else
 				{
-					line += '<span style="color:' + this.offColor + '">';
+					line += this.offColor;
 				}
-				line += grid[row][col].letter[0] + "</span> ";
+				line += '">' + grid[row][col].letter[0] + "</span> ";
 			}
 			html += line + '<br>';
 		}
@@ -325,21 +327,21 @@ function WordClock(bgColor, onColor, offColor)
 		{
 			for(var col in grid[row])
 			{
-				var letter = "";
+				var letter = '<span style="color:';
 				
 				// If the letter is on, use the on color
 				if(grid[row][col].isOn)
 				{
-					letter = '<span style="color:' + this.onColor + '">';
+					letter += this.onColor;
 				}
 				
 				// Otherwise, use the off color
 				else
 				{
-					letter = '<span style="color:' + this.offColor + '">';
+					letter += this.offColor;
 				}
 				
-				letter += grid[row][col].letter + "</span> ";
+				letter += '">' + grid[row][col].letter + "</span> ";
 				
 				// Add a div for the letter block
 				html += '<div class="' + blockClassName + '">' + letter + '</div>';
