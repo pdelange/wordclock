@@ -1,0 +1,161 @@
+
+.solid-border
+{
+	border: 1px solid #000000;
+}
+
+.full-container
+{
+	
+}
+
+.centered-wrapper
+{
+	width: 942px;
+	height: 605px;
+}
+
+.tall-box-left
+{
+	width: 250px;
+	height: 605px;
+	float: left;
+}
+
+.tall-box-right
+{
+	width: 690px;
+	height: 605px;
+	float: right;
+}
+
+.full-length-bar
+{
+	width: 922px;
+	min-height: 40px;
+	margin-top: 10px;
+	padding-top: 10px;
+	background-color: #000000;
+	color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.75em;
+}
+
+/*
+
+#clock-face-text
+{
+	font-family: monospace;
+	width: 225px;
+	height: 225px;
+	padding: 10px;
+	margin: 10px;
+}
+*/
+
+/*
+div
+{
+	border: 1px solid #000000;
+}
+*/
+
+.width-fixed-240
+{
+	width: 240px;
+}
+
+.width-fixed-big
+{
+	width: 720px;
+}
+
+#intro-title
+{
+	background-color: #000000;
+    color: #303030;
+	
+	font-family: 'Lucida Console', Monaco, monospace;
+	width: 230px;
+	height: 230px;
+	padding: 5px;
+	margin: 5px;
+	margin-top: 10px;
+}
+
+#intro-title h1
+{
+	font-size: 50px;
+	margin-top: 0px;
+}
+
+.white-text
+{
+	color: #FFFFFF;
+}
+
+.sized-section
+{
+	width: 230px;
+	padding: 5px;
+	margin: 5px;
+	
+	background-color: #000000;
+    color: #FFFFFF;
+}
+
+.sized-section p
+{
+	padding-bottom: 0px;
+	padding-top: 5px;
+}
+
+.sized-section input
+{
+	color: #000000;
+}
+
+#clock-container
+{
+  height: 45px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#input-block
+{
+	height: 80px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#input-warning
+{
+	color: red;
+	font-weight: 900;
+	display: none;
+}
+
+#big-clock
+{
+	width: 670px;
+	height: 590px;
+	margin: 5px;
+	margin-top: 10px;
+	padding-top: 25px;
+	
+	background-color: #000000;
+    color: #303030;
+}
+
+#big-clock-letters
+{
+	width: 580px;
+}
+
+.big-letter
+{
+	width: 50px;
+	height: 55px;
+	display: inline-block;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 30px;
+}
