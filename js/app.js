@@ -65,7 +65,7 @@ var main = function(){
 		
 		// Update big clock
 		wordClock.updateBigGrid("big-letter", "#big-clock-letters");
-	}
+	};
 	
 	
 	// Display current time
@@ -73,7 +73,7 @@ var main = function(){
 		var d = new Date();
 		var t = d.toLocaleTimeString();
 		document.getElementById("clock-text").innerHTML = t;
-	}
+	};
 	var clockIntervalID = setInterval(function(){updateCurrentTime();}, 1);
 	
 	
