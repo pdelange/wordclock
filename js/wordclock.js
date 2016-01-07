@@ -1,26 +1,31 @@
+// Original English version by jcjmartin
+// https://github.com/jcjmartin/wordclock
+
+// Dutch version by Peter de Lange
+// https://github.com/pdelange/wordclock
 
 // Word Clock class
 function WordClock(bgColor, onColor, offColor)
 {
 	// Set colors (or use defaults)
    
-	this.bgColor = typeof bgColor !== 'undefined' ? bgColor : "#000000";  // Black
-	this.onColor = typeof onColor !== 'undefined' ? onColor : "#FFFFFF";  // White
-	this.offColor = typeof offColor !== 'undefined' ? offColor : "#303030";  // Dark Gray
+	this.bgColor = typeof bgColor !== 'undefined' ? bgColor : "#000000";  		// Black
+	this.onColor = typeof onColor !== 'undefined' ? onColor : "#FFFFFF";  		// White
+	this.offColor = typeof offColor !== 'undefined' ? offColor : "#303030";  	// Dark Gray
 	
 	// String representation
 	var letterArray = [
 //Col012345678910
-	"ITLISASTIME", // Row 0
-	"ACQUARTERDC", // Row 1
-	"TWENTYFIVEX", // Row 2
-	"HALFBTENFTO", // Row 3
-	"PASTERUNINE", // Row 4
-	"ONESIXTHREE", // Row 5
-	"FOURFIVETWO", // Row 6
-	"EIGHTELEVEN", // Row 7
-	"SEVENTWELVE", // Row 8
-	"TENSEOCLOCK"  // Row 9
+	"HETKISAVIJF", // Row 0
+	"TIENATZVOOR", // Row 1
+	"OVERMEKWART", // Row 2
+	"HALFSPMOVER", // Row 3
+	"VOORTHGÉÉNS", // Row 4
+	"TWEEAMCDRIE", // Row 5
+	"VIERVIJFZES", // Row 6
+	"ZEVENONEGEN", // Row 7
+	"ACHTTIENELF", // Row 8
+	"TWAALFAMUUR"  // Row 9
 	];
 	
 	// Block class (represents each letter and whether it is on) to use in grid representation below
@@ -42,12 +47,8 @@ function WordClock(bgColor, onColor, offColor)
 			}
 		}
 		
-		// Special code to add the apostrophe in O'CLOCK
-		grid[9][5].letter = "O'";
-		
 		return grid;
 	}();  // The () makes it return a value to assign to grid instead of passing a function
-	
 	
 	// Change which "lights" are "on" based on the time
 	// Takes time as a parameter instead of using current time to test/debug different times
@@ -79,76 +80,88 @@ function WordClock(bgColor, onColor, offColor)
 			}
 		};
 		
-		
 		// Turning on blocks follows the logic below
 		
 		// Creating an array of words to replace based on the logic below
 		var words = []; // Words to turn on
 		
-		// The following logic applies to rows 0-4 only:
+		// The following logic applies to rows 0-1 only:
 		
-		// 'IT IS' is always on
-		words.push("IT");
+		// 'HET IS' is always on
+		words.push("HET");
 		words.push("IS");		
 		
-		// 'Past' is displayed between xx:05 and xx:34
-		if(minute >= 5 && minute <= 34)
+		// "Vijf" is displayed between xx:05 and xx:09 or between xx:25 and xx:29 or between xx:35 and xx:39 or between xx:55 and xx:59
+		if(minute >= 5 && minute <= 9 || minute >= 25 && minute <= 29 || minute >= 35 && minute <= 39 || minute >= 55 && minute <= 59)
 		{
-			words.push("PAST");
+			words.push("VIJF");
 		}
-		
-		// 'To' is displayed between xx:35 and xx:59
-		if(minute >= 35 && minute <= 59)
+		// "Tien" is displayed between xx:10 and xx:14 or between xx:20 and xx:24 or between xx:40 and xx:44  or between xx:50 and xx:54
+		if(minute >= 10 && minute <= 14 || minute >= 20 && minute <= 24 || minute >= 40 && minute <= 44 || minute >= 50 && minute <= 54)
 		{
-			words.push("TO");
+			words.push("TIEN");
 		}
-
-		// "Five" is displayed between xx:05 and xx:09 or between xx:55 and xx:59
-		if(minute >= 5 && minute <= 9 || minute >= 55 && minute <= 59)
-		{
-			words.push("FIVE");
-		}
-		
-		// "Ten" is displayed between xx:10 and xx:14 or between xx:50 and xx:54
-		if(minute >= 10 && minute <= 14 || minute >= 50 && minute <= 54)
-		{
-			words.push("TEN");
-		}
-		
-		// "Quarter" is displayed between xx:15 and xx:19 or between xx:45 and xx:49
-		if(minute >= 15 && minute <= 19 || minute >= 45 && minute <= 49)
-		{
-			words.push("QUARTER");
-			
-			// Special code to make it say "A QUARTER" by replacing the first "A" with "on" symbol
-			onMap[1] = on + onMap[1].substring(1,onMap[1].length);
-		}
-		
-		// "Twenty" is displayed between xx:20 and xx:24 or between xx:40 and xx:44
-		if(minute >= 20 && minute <= 24 || minute >= 40 && minute <= 44)
-		{
-			words.push("TWENTY");
-		}
-		// "TwentyFive" is displayed between xx:25 and xx:29 or between xx:35 and xx:39
-		if(minute >= 25 && minute <= 29 || minute >= 35 && minute <= 39)
-		{
-			words.push("TWENTYFIVE");
-		}
-		// "Half" is displayed between xx:30 and xx:34
-		if(minute >= 30 && minute <= 34)
-		{
-			words.push("HALF");
-		}
-		
 		// Turn on words for rows 0-4
-		turnOn(0,4);
-		
+		turnOn(0,1);
 		
 		// Reset words
 		words = [];
 		
+		// The following logic applies to rows 2-3 only:
+
+		// "Kwart" is displayed between xx:15 and xx:19 or between xx:45 and xx:49
+		if(minute >= 15 && minute <= 19 || minute >= 45 && minute <= 49)
+		{
+			words.push("KWART");
+		}
+		// "Half" is displayed between xx:20 and xx:44
+		if(minute >= 20 && minute <= 44)
+		{
+			words.push("HALF");
+		}
+		// Turn on words for rows 2-3
+		turnOn(2,3);
 		
-		// The following logic applies to rows 4-9:
+		// Reset words
+		words = [];
+		
+		// The following logic applies to rows 1-2 only:
+
+		// "Voor" is displayed between xx:20 and xx:29
+		if(minute >= 20 && minute <= 29)
+		{
+			words.push("VOOR");
+		}
+		// "Over" is displayed between xx:35 and xx:44
+		if(minute >= 35 && minute <= 44)
+		{
+			words.push("OVER");
+		}
+		// Turn on words for rows 1-2
+		turnOn(1,2);
+		
+		// Reset words
+		words = [];
+
+		// The following logic applies to rows 3-4 only:
+
+		// "Voor" is displayed between xx:05 and xx:19
+		if(minute >= 05 && minute <= 19)
+		{
+			words.push("OVER");
+		}
+		// "Over" is displayed between xx:50 and xx:59
+		if(minute >= 50 && minute <= 59)
+		{
+			words.push("VOOR");
+		}
+		// Turn on words for rows 3-4
+		turnOn(3,4);
+		
+		// Reset words
+		words = [];
+
+		// The following logic applies to rows 5-9:
 		
 		// Create a date for comparison (assumes 12-hour format for hour)
 		
@@ -163,87 +176,86 @@ function WordClock(bgColor, onColor, offColor)
 		var strTime = hr + ":" + min;
 		var clockTime = Date.parse("01/01/2011 " + strTime);
 		
-		// ONE is displayed between 12:35 and 12:59 or 01:00 and 01:34
+		// 'ÉÉN' is displayed between 12:35 and 12:59 or 01:00 and 01:34
 		if(clockTime >= Date.parse("01/01/2011 12:35") && clockTime <= Date.parse("01/01/2011 12:59") || clockTime >= Date.parse("01/01/2011 01:00") && clockTime <= Date.parse("01/01/2011 01:34"))
 		{
-			words.push("ONE");
+			words.push("ÉÉN");
 		}
 		
-		// TWO is displayed between 01:35 and 02:34
+		// 'TWEE' is displayed between 01:35 and 02:34
 		if(clockTime >= Date.parse("01/01/2011 01:35") && clockTime <= Date.parse("01/01/2011 02:34"))
 		{
-			words.push("TWO");
+			words.push("TWEE");
 		}
 		
-		// THREE is displayed between 02:35 and 03:34
+		// 'DRIE' is displayed between 02:35 and 03:34
 		if(clockTime >= Date.parse("01/01/2011 02:35") && clockTime <= Date.parse("01/01/2011 03:34"))
 		{
-			words.push("THREE");
+			words.push("DRIE");
 		}
 		
-		// FOUR is displayed between 03:35 and 04:34
+		// 'VIER' is displayed between 03:35 and 04:34
 		if(clockTime >= Date.parse("01/01/2011 03:35") && clockTime <= Date.parse("01/01/2011 04:34"))
 		{
-			words.push("FOUR");
+			words.push("VIER");
 		}
 		
-		// FIVE is displayed between 04:35 and 05:34
+		// 'VIJF' is displayed between 04:35 and 05:34
 		if(clockTime >= Date.parse("01/01/2011 04:35") && clockTime <= Date.parse("01/01/2011 05:34"))
 		{
-			words.push("FIVE");
+			words.push("VIJF");
 		}
 		
-		// SIX is displayed between 05:35 and 06:34
+		// 'ZES' is displayed between 05:35 and 06:34
 		if(clockTime >= Date.parse("01/01/2011 05:35") && clockTime <= Date.parse("01/01/2011 06:34"))
 		{
-			words.push("SIX");
+			words.push("ZES");
 		}
 		
-		// SEVEN is displayed between 06:35 and 07:34
+		// 'ZEVEN' is displayed between 06:35 and 07:34
 		if(clockTime >= Date.parse("01/01/2011 06:35") && clockTime <= Date.parse("01/01/2011 07:34"))
 		{
-			words.push("SEVEN");
+			words.push("ZEVEN");
 		}
 		
-		// EIGHT is displayed between 07:35 and 08:34
+		// 'ACHT' is displayed between 07:35 and 08:34
 		if(clockTime >= Date.parse("01/01/2011 07:35") && clockTime <= Date.parse("01/01/2011 08:34"))
 		{
-			words.push("EIGHT");
+			words.push("ACHT");
 		}
 		
-		// NINE is displayed between 08:35 and 09:34
+		// 'NEGEN' is displayed between 08:35 and 09:34
 		if(clockTime >= Date.parse("01/01/2011 08:35") && clockTime <= Date.parse("01/01/2011 09:34"))
 		{
-			words.push("NINE");
+			words.push("NEGEN");
 		}
 		
-		// TEN is displayed between 09:35 and 10:34
+		// 'TIEN' is displayed between 09:35 and 10:34
 		if(clockTime >= Date.parse("01/01/2011 09:35") && clockTime <= Date.parse("01/01/2011 10:34"))
 		{
-			words.push("TEN");
+			words.push("TIEN");
 		}
 		
-		// ELEVEN is displayed between 10:35 and 11:34
+		// 'ELF' is displayed between 10:35 and 11:34
 		if(clockTime >= Date.parse("01/01/2011 10:35") && clockTime <= Date.parse("01/01/2011 11:34"))
 		{
-			words.push("ELEVEN");
+			words.push("ELF");
 		}
 		
-		// TWELVE is displayed between 11:35 and 12:34
+		// 'TWAALF' is displayed between 11:35 and 12:34
 		if(clockTime >= Date.parse("01/01/2011 11:35") && clockTime <= Date.parse("01/01/2011 12:34"))
 		{
-			words.push("TWELVE");
+			words.push("TWAALF");
 		}
 		
-		// 'O'clock' is displayed between xx:00 and xx:04
+		// 'UUR' is displayed between xx:00 and xx:04
 		if(minute >= 0 && minute <= 4)
 		{
-			words.push("OCLOCK");
+			words.push("UUR");
 		}
 		
 		// Turn on words for rows 4-9
 		turnOn(4,9);
-		
 		
 		// After bitmap is set, turn on blocks in grid according to bitmap
 		for(var row in onMap)
@@ -317,7 +329,6 @@ function WordClock(bgColor, onColor, offColor)
 		// Assign HTML to the ID
 		$(id).html(html);
 	};
-	
 	
 	// Update big grid with current grid state
 	// Assumes a class exists to style each letter block
