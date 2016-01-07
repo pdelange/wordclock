@@ -176,74 +176,74 @@ function WordClock(bgColor, onColor, offColor)
 		var strTime = hr + ":" + min;
 		var clockTime = Date.parse("01/01/2011 " + strTime);
 		
-		// 'ÉÉN' is displayed between 12:35 and 12:59 or 01:00 and 01:34
-		if(clockTime >= Date.parse("01/01/2011 12:35") && clockTime <= Date.parse("01/01/2011 12:59") || clockTime >= Date.parse("01/01/2011 01:00") && clockTime <= Date.parse("01/01/2011 01:34"))
+		// 'ÉÉN' is displayed between 12:20 and 13:19 or 01:20 and 01:19
+		if(clockTime >= Date.parse("01/01/2011 12:20") && clockTime <= Date.parse("01/01/2011 13:19") || clockTime >= Date.parse("01/01/2011 00:20") && clockTime <= Date.parse("01/01/2011 01:19"))
 		{
 			words.push("ÉÉN");
 		}
 		
-		// 'TWEE' is displayed between 01:35 and 02:34
-		if(clockTime >= Date.parse("01/01/2011 01:35") && clockTime <= Date.parse("01/01/2011 02:34"))
+		// 'TWEE' is displayed between 01:20 and 02:19
+		if(clockTime >= Date.parse("01/01/2011 01:20") && clockTime <= Date.parse("01/01/2011 02:19"))
 		{
 			words.push("TWEE");
 		}
 		
-		// 'DRIE' is displayed between 02:35 and 03:34
-		if(clockTime >= Date.parse("01/01/2011 02:35") && clockTime <= Date.parse("01/01/2011 03:34"))
+		// 'DRIE' is displayed between 02:20 and 03:19
+		if(clockTime >= Date.parse("01/01/2011 02:20") && clockTime <= Date.parse("01/01/2011 03:19"))
 		{
 			words.push("DRIE");
 		}
 		
-		// 'VIER' is displayed between 03:35 and 04:34
-		if(clockTime >= Date.parse("01/01/2011 03:35") && clockTime <= Date.parse("01/01/2011 04:34"))
+		// 'VIER' is displayed between 03:20 and 04:19
+		if(clockTime >= Date.parse("01/01/2011 03:20") && clockTime <= Date.parse("01/01/2011 04:19"))
 		{
 			words.push("VIER");
 		}
 		
-		// 'VIJF' is displayed between 04:35 and 05:34
-		if(clockTime >= Date.parse("01/01/2011 04:35") && clockTime <= Date.parse("01/01/2011 05:34"))
+		// 'VIJF' is displayed between 04:20 and 05:19
+		if(clockTime >= Date.parse("01/01/2011 04:20") && clockTime <= Date.parse("01/01/2011 05:19"))
 		{
 			words.push("VIJF");
 		}
 		
-		// 'ZES' is displayed between 05:35 and 06:34
-		if(clockTime >= Date.parse("01/01/2011 05:35") && clockTime <= Date.parse("01/01/2011 06:34"))
+		// 'ZES' is displayed between 05:20 and 06:19
+		if(clockTime >= Date.parse("01/01/2011 05:20") && clockTime <= Date.parse("01/01/2011 06:19"))
 		{
 			words.push("ZES");
 		}
 		
-		// 'ZEVEN' is displayed between 06:35 and 07:34
-		if(clockTime >= Date.parse("01/01/2011 06:35") && clockTime <= Date.parse("01/01/2011 07:34"))
+		// 'ZEVEN' is displayed between 06:20 and 07:19
+		if(clockTime >= Date.parse("01/01/2011 06:20") && clockTime <= Date.parse("01/01/2011 07:19"))
 		{
 			words.push("ZEVEN");
 		}
 		
-		// 'ACHT' is displayed between 07:35 and 08:34
-		if(clockTime >= Date.parse("01/01/2011 07:35") && clockTime <= Date.parse("01/01/2011 08:34"))
+		// 'ACHT' is displayed between 07:20 and 08:19
+		if(clockTime >= Date.parse("01/01/2011 07:20") && clockTime <= Date.parse("01/01/2011 08:19"))
 		{
 			words.push("ACHT");
 		}
 		
-		// 'NEGEN' is displayed between 08:35 and 09:34
-		if(clockTime >= Date.parse("01/01/2011 08:35") && clockTime <= Date.parse("01/01/2011 09:34"))
+		// 'NEGEN' is displayed between 08:20 and 09:19
+		if(clockTime >= Date.parse("01/01/2011 08:20") && clockTime <= Date.parse("01/01/2011 09:19"))
 		{
 			words.push("NEGEN");
 		}
 		
-		// 'TIEN' is displayed between 09:35 and 10:34
-		if(clockTime >= Date.parse("01/01/2011 09:35") && clockTime <= Date.parse("01/01/2011 10:34"))
+		// 'TIEN' is displayed between 09:20 and 10:19
+		if(clockTime >= Date.parse("01/01/2011 09:20") && clockTime <= Date.parse("01/01/2011 10:19"))
 		{
 			words.push("TIEN");
 		}
 		
-		// 'ELF' is displayed between 10:35 and 11:34
-		if(clockTime >= Date.parse("01/01/2011 10:35") && clockTime <= Date.parse("01/01/2011 11:34"))
+		// 'ELF' is displayed between 10:20 and 11:19
+		if(clockTime >= Date.parse("01/01/2011 10:20") && clockTime <= Date.parse("01/01/2011 11:19"))
 		{
 			words.push("ELF");
 		}
 		
-		// 'TWAALF' is displayed between 11:35 and 12:34
-		if(clockTime >= Date.parse("01/01/2011 11:35") && clockTime <= Date.parse("01/01/2011 12:34"))
+		// 'TWAALF' is displayed between 11:20 and 12:19
+		if(clockTime >= Date.parse("01/01/2011 11:20") && clockTime <= Date.parse("01/01/2011 12:19"))
 		{
 			words.push("TWAALF");
 		}
